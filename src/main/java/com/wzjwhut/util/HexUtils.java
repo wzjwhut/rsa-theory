@@ -1,4 +1,4 @@
-package com.eques.eqhome.util.text;
+package com.wzjwhut.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +21,37 @@ public class HexUtils {
 		}
 		return stringBuf.toString();
 	}
+
+
+    public static String dumpString(byte[] bin) {
+        if(bin == null){
+            return "";
+        }
+        StringBuilder stringBuf = new StringBuilder(bin.length<<1);
+        for (int i = 0; i < bin.length; i++) {
+            stringBuf.append(chars[(bin[i]>>4)&0x0f]);
+            stringBuf.append(chars[bin[i]&0x0f]);
+            stringBuf.append(' ');
+        }
+        return stringBuf.toString();
+    }
+
+    public static String dumpString(byte[] bin, int numPerLine) {
+        if(bin == null){
+            return "";
+        }
+        StringBuilder stringBuf = new StringBuilder(bin.length<<1);
+        for (int i = 0; i < bin.length; i++) {
+            stringBuf.append(chars[(bin[i]>>4)&0x0f]);
+            stringBuf.append(chars[bin[i]&0x0f]);
+            if((i%numPerLine) == (numPerLine-1)){
+                stringBuf.append("\r\n");
+            }else {
+                stringBuf.append(' ');
+            }
+        }
+        return stringBuf.toString();
+    }
 
 	public static String hexString(byte[] bin, int offset, int len) {
 		if(bin == null){
@@ -93,18 +124,6 @@ public class HexUtils {
         return builder;
     }
 
-    public static String dumpString(byte[] bin) {
-        if(bin == null){
-            return "";
-        }
-        StringBuilder stringBuf = new StringBuilder(bin.length<<1);
-        for (int i = 0; i < bin.length; i++) {
-            stringBuf.append(chars[(bin[i]>>4)&0x0f]);
-            stringBuf.append(chars[bin[i]&0x0f]);
-            stringBuf.append(' ');
-        }
-        return stringBuf.toString();
-    }
 
     public static String dumpString(byte[] bin, int offset, int len) {
         if(bin == null){

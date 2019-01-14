@@ -1,5 +1,6 @@
 package com.wzjwhut.example;
 
+import com.wzjwhut.util.HexUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,8 +23,8 @@ public class SystemRSA {
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
         logger.info("format: {}", publicKey.getFormat());
-//        logger.info("private key: {}", privateKey.getEncoded());
-//        logger.info("public key: {}", publicKey.getEncoded());
+        logger.info("private key: \r\n{}", HexUtils.dumpString(privateKey.getEncoded(), 16));
+        logger.info("public key: \r\n{}", HexUtils.dumpString(publicKey.getEncoded(), 16));
     }
 
     public byte[] encrypt(byte[] raw) throws Exception {

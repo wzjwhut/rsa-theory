@@ -13,14 +13,14 @@ public class Main {
     private final static byte[] rawMessage = "hello world".getBytes();
 
     public static void main(String[] args) throws Exception {
-        {
-            MyRSA rsa = new MyRSA();
-            logger.info("[my] raw message: {}", StringUtils.join(rawMessage, ','));
-            byte[] encrypted = rsa.encrypt(rawMessage);
-            logger.info("[my] encrypted message: {}", StringUtils.join(encrypted, ','));
-            byte[] decrypted = rsa.decrypt(encrypted);
-            logger.info("[my] decrypted message: {}", StringUtils.join(decrypted, ','));
-        }
+//        {
+//            MyRSA rsa = new MyRSA();
+//            logger.info("[my] raw message: {}", StringUtils.join(rawMessage, ','));
+//            byte[] encrypted = rsa.encrypt(rawMessage);
+//            logger.info("[my] encrypted message: {}", StringUtils.join(encrypted, ','));
+//            byte[] decrypted = rsa.decrypt(encrypted);
+//            logger.info("[my] decrypted message: {}", StringUtils.join(decrypted, ','));
+//        }
 
         {
             SystemRSA rsa = new SystemRSA();
